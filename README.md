@@ -1,18 +1,18 @@
 # OpenClaw-Team
 
-**让每个团队成员拥有独立的 AI 助手，数据互不干扰**
+**Give every team member their own AI assistant — with strict data isolation**
 
 ---
 
 ## About
 
-OpenClaw-Team 是基于 [OpenClaw](https://github.com/openclaw/openclaw) 改造的多用户版本，为企业提供**安全隔离、团队协作、统一管理**的 AI 助手平台。
+OpenClaw-Team is a multi-user enterprise version built on [OpenClaw](https://github.com/openclaw/openclaw), providing **secure isolation, team collaboration, and unified management** for AI assistant platforms.
 
-### 原始版本的局限
+### The Problem with the Original Version
 
-> 所有人共享同一个 AI 助手配置，张三创建的 Agent，李四也能看到；王五的定时任务，赵六也能修改。
+> Everyone shares the same AI assistant configuration — Zhang San's agents are visible to Li Si; Wang Wu's cron jobs can be modified by Zhao Liu.
 
-OpenClaw-Team 在保持原有功能的基础上，构建了**多用户隔离机制**。每个用户登录后，只能看到和管理自己创建的内容，所有数据严格分离。
+OpenClaw-Team keeps all original features while adding a **multi-user isolation mechanism**. Each user can only see and manage what they created, with strict data separation.
 
 ---
 
