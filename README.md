@@ -98,7 +98,7 @@ Administrators can access the management backend to perform:
 │  ┌───────────────────────▼──────────────────────────┐  │
 │  │                      Gateway                     │  │
 │  │                                                     │  │
-│  │  /agents.list  →  Query user_agents table  → Own│  │
+│  │  /agents.list  →  Query user_agents table  → Own  │  │
 │  │  /cron.list   →  Query user_crons table   → Own  │  │
 │  │  /cron.runs  →  Check jobId authorization       │  │
 │  │  /config.patch →  AI creates Agent → user_agents  │  │
@@ -108,11 +108,11 @@ Administrators can access the management backend to perform:
 │         │                                       │        │
 │  ┌──────▼──────┐                        ┌─────▼──────┐  │
 │  │ PostgreSQL  │                        │   Config   │  │
-│  │             │                        │   File    │  │
+│  │             │                        │   File     │  │
 │  │ users       │                        │ (~/.open- │  │
 │  │ user_agents │                        │   claw/)   │  │
 │  │ user_crons  │                        │            │  │
-│  │refresh_tokens│                       │ agents.json│  │
+│  │refresh_tokens│                        │ agents.json │  │
 │  └─────────────┘                        └────────────┘  │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -132,33 +132,50 @@ Administrators can access the management backend to perform:
 
 ### Prerequisites
 
-- Node.js >= 22
-- PostgreSQL database
+- **Node.js** >= 22.16.0
+- **PostgreSQL** >= 14
+- **pnpm** >= 10.x (`npm install -g pnpm`)
 
-### Installation
+### Quick Start
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/iberya/openclaw-team.git
 cd openclaw-team
 
-# Install dependencies
+# 2. Install dependencies
 pnpm install
 
-# Build
+# 3. Build UI and backend
+pnpm ui:build
 pnpm build
 
-# Configure environment (copy and edit .env.enterprise)
-cp .env.enterprise .env
-# Edit .env with your database credentials and JWT secret
+# 4. Configure environment
+cp .env.enterprise ~/.openclaw/.env
+# Edit ~/.openclaw/.env with your database credentials and JWT secret
 
-# Start the gateway
-node openclaw.mjs gateway --port 18789
+# 5. Initialize database
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/001_users.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/002_agents.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/003_sessions.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/004_memories.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/005_secrets.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/006_audit.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/007_rls.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/008_rbac_permissions.sql
+PGPASSWORD=your_password psql -d openclaw -U openclaw -f db/schema/009_user_data_isolation.sql
+
+# 6. Start the gateway
+pnpm start
+
+# 7. Access the control panel
+# Open http://127.0.0.1:18789
+# Default admin login: admin@openclaw.ai / admin123
 ```
 
 ### Configuration
 
-Create or edit `~/.openclaw/openclaw.json`:
+Edit `~/.openclaw/openclaw.json`:
 
 ```json
 {
@@ -187,6 +204,8 @@ Create or edit `~/.openclaw/openclaw.json`:
   }
 }
 ```
+
+For detailed installation instructions (server requirements, cloud deployment, troubleshooting), see the [Full Installation Guide](docs/install/getting-started.md).
 
 ---
 
