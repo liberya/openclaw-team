@@ -1,0 +1,17 @@
+OpenClaw-Team
+Copyright 2026 OpenClaw-Team Contributors
+
+This project includes software developed by Peter Steinberger and the OpenClaw community.
+
+OpenClaw (https://github.com/openclaw/openclaw) is licensed under the MIT License.
+Copyright (c) 2025 Peter Steinberger
+
+This project includes the following third-party components:
+
+- A2UI (Apache 2.0 License)
+  Vendored in vendor/a2ui/
+  Copyright and license terms are included in vendor/a2ui/LICENSE
+
+- OpenClaw Enterprise builds upon OpenClaw and introduces multi-tenant
+  enterprise features including user authentication, data isolation,
+  and administrative controls.
