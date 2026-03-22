@@ -231,3 +231,11 @@ See [LICENSE](LICENSE) and [NOTICE](NOTICE) for details.
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+## Join Our Community
+
+Scan the QR code below to join the OpenClaw Enterprise WeChat group for discussions and support.
+
+![WeChat Group](assets/wechat-group.png)
